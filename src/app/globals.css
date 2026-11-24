@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Design tokens — BUILDERVERSE
+   Palette is approved. No pink or purple tones are permitted.
+   ------------------------------------------------------------------ */
+@theme {
+  --color-midnight: #090d12;
+  --color-obsidian: #111820;
+  --color-lime: #b8ff35;
+  --color-cyan: #00d9ff;
+  --color-orange: #ff7138;
+  --color-cobalt: #1769ff;
+  --color-warm-white: #f4f5ef;
+  --color-muted: #87929e;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    background: var(--color-midnight);
+    color: var(--color-warm-white);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--color-midnight);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-midnight);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Fluid editorial display type — tight tracking, dramatic scale. */
+@utility text-display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+
+@utility text-display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, 5.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+@utility text-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+@utility skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 100;
+  border-radius: 9999px;
+  background: var(--color-lime);
+  color: var(--color-midnight);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  &:focus {
+    top: 1rem;
+  }
+}
